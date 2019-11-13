@@ -51,8 +51,9 @@ matrix matrix_create_from_array(int m, int n, double data[]){
 }
 
 matrix matrix_clone(matrix mat){
-    matrix mat2 = mat;
-    return mat2;
+  matrix newmat = matrix_create(mat.m,mat.n);
+  memcpy(*(newmat.data), *(mat.data), mat.m * mat.n * sizeof(newmat.data));
+  return newmat;
 }
 
 void matrix_print(matrix mat){
